@@ -1,0 +1,953 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="東京大学情報基盤センター・東京大学生産技術研究所が運用するGPUクラスタ SYNKA の公式サイト">
+      
+      
+      
+        <link rel="canonical" href="https://toyolabo.github.io/synka-website/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SYNKAシステム公式サイト</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#大規模gpuシステム-synka-公式サイト" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="." title="SYNKAシステム公式サイト" class="md-header__button md-logo" aria-label="SYNKAシステム公式サイト" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SYNKAシステム公式サイト
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ホーム
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="SYNKAシステム公式サイト" class="md-nav__button md-logo" aria-label="SYNKAシステム公式サイト" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SYNKAシステム公式サイト
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#synka-システムについて" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SYNKA システムについて
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SYNKA システムについて">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#システムの特徴" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        システムの特徴
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#システム仕様" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        システム仕様
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="システム仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#計算資源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        計算資源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ソフトウェア" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ソフトウェア
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ストレージ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ストレージ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#サービス" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        サービス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="サービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#専有パーティションの利用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        専有パーティションの利用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#共有パーティションの利用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        共有パーティションの利用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="共有パーティションの利用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#超過利用overdraw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        超過利用（Overdraw）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#利用料金" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用料金
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#利用規程ポリシー" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用規程・ポリシー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用規程・ポリシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#主なポリシー" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主なポリシー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#利用申込" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用申込
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用申込">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#利用資格" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        利用資格
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#申請の流れ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        申請の流れ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#サポート" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        サポート
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="サポート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#よくある質問faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        よくある質問（FAQ）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#お問い合わせ" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        お問い合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="大規模gpuシステム-synka-公式サイト">大規模GPUシステム SYNKA 公式サイト<a class="headerlink" href="#大規模gpuシステム-synka-公式サイト" title="Permanent link">&para;</a></h1>
+<h2 id="synka-システムについて">SYNKA システムについて<a class="headerlink" href="#synka-システムについて" title="Permanent link">&para;</a></h2>
+<p>SYNKA システムは東京大学臨床医療システムAI研究推進機構および東京大学生産技術研究所の GPU クラスタで、東京大学情報基盤センターとともに運用にあたっています。NVIDIA H200 GPU を搭載した計算ノード 50 台（GPU 400 基）を備え、AI 学習・推論やデータ解析など、AI for Science に資する研究を目的として利用できます。</p>
+<p><img alt="システム構成図" src="onepager-assets/images/system-architecture.png" /></p>
+<h3 id="システムの特徴">システムの特徴<a class="headerlink" href="#システムの特徴" title="Permanent link">&para;</a></h3>
+<ul>
+<li>NVIDIA H200 GPU を搭載した計算ノード 50 台（GPU 400 基）</li>
+<li>プロジェクト専有パーティションと共有パーティションの併設</li>
+<li>階層型ストレージ（高速 SSD 2.1 PB ＋ 大容量 HDD 5 PB）を全ノードで共有</li>
+<li>Slurm によるジョブスケジューリング</li>
+<li>標準ソフトウェア: CUDA / cuDNN / NCCL、コンテナ（Apptainer）、PyTorch / TensorFlow 等</li>
+</ul>
+<hr />
+<h2 id="システム仕様">システム仕様<a class="headerlink" href="#システム仕様" title="Permanent link">&para;</a></h2>
+<h3 id="計算資源">計算資源<a class="headerlink" href="#計算資源" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU ノード</td>
+<td>50 台</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>NVIDIA H200 × 8 基 / ノード（計 400 基）</td>
+</tr>
+<tr>
+<td>CPU ノード</td>
+<td>6 台、Intel Xeon Platinum 8480+ × 2（56 コア）</td>
+</tr>
+<tr>
+<td>メモリ</td>
+<td>2,048 GB / ノード</td>
+</tr>
+<tr>
+<td>ローカルストレージ</td>
+<td>480 GB NVMe SSD × 2 / ノード</td>
+</tr>
+<tr>
+<td>ノード間ネットワーク</td>
+<td>InfiniBand NDR × 8 ポート / ノード</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ソフトウェア">ソフトウェア<a class="headerlink" href="#ソフトウェア" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Ubuntu Server 22.04</td>
+</tr>
+<tr>
+<td>ジョブスケジューラ</td>
+<td>Slurm</td>
+</tr>
+<tr>
+<td>GPU ソフトウェア</td>
+<td>CUDA / cuDNN / NCCL</td>
+</tr>
+<tr>
+<td>コンテナ</td>
+<td>Apptainer</td>
+</tr>
+<tr>
+<td>機械学習フレームワーク</td>
+<td>PyTorch / TensorFlow / JAX</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ストレージ">ストレージ<a class="headerlink" href="#ストレージ" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>容量</th>
+<th>用途</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高速ストレージ（SSD）</td>
+<td>2.1 PB</td>
+<td>個人ディレクトリ専用（<code>/home</code>）</td>
+<td>容量の追加購入は不可（1 ユーザあたり 100 GB）</td>
+</tr>
+<tr>
+<td>大容量ストレージ</td>
+<td>5 PB</td>
+<td>プロジェクト用ディレクトリ（<code>/data</code>）</td>
+<td>有料（5 TB まで無料、超過分は 540 円／TB／月）。詳細は<a href="#利用料金">利用料金</a>を参照</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="サービス">サービス<a class="headerlink" href="#サービス" title="Permanent link">&para;</a></h2>
+<p>SYNKA では Slurm バッチキューによるジョブ管理を採用しており、計算資源を <strong>専有パーティション</strong> と <strong>共有パーティション</strong> の 2 種類に分けて運用しています。プロジェクトの規模・用途に応じて選択でき、<strong>両方を併用することも可能</strong> です。料金の詳細は<a href="#利用料金">利用料金</a>セクションに集約しています。</p>
+<h3 id="専有パーティションの利用">専有パーティションの利用<a class="headerlink" href="#専有パーティションの利用" title="Permanent link">&para;</a></h3>
+<p>専有パーティションは、ノード単位でプロジェクトに排他的に割り当てる利用形態です。大規模・長時間のジョブを継続的に流したい場合に適しています。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ノード数</td>
+<td>契約ノード数単位（1 ノード = 8 GPU）、複数ノードの申込可</td>
+</tr>
+<tr>
+<td>利用単位</td>
+<td>1 ノード／日（日割り計算）</td>
+</tr>
+<tr>
+<td>利用期間</td>
+<td>1 カ月単位で設定（原則として年度末までの範囲内）</td>
+</tr>
+<tr>
+<td>最大実行時間</td>
+<td>実質なし（契約期間中は継続確保）</td>
+</tr>
+<tr>
+<td>利用料金</td>
+<td><a href="#利用料金">利用料金</a>を参照</td>
+</tr>
+<tr>
+<td>備考</td>
+<td>契約期間中、専用ノードを確保。共有パーティションとの併用可</td>
+</tr>
+</tbody>
+</table>
+<h3 id="共有パーティションの利用">共有パーティションの利用<a class="headerlink" href="#共有パーティションの利用" title="Permanent link">&para;</a></h3>
+<p>共有パーティションは、<strong>GPU 利用時間</strong> を購入することで複数プロジェクトが GPU を共有して利用する形態です。専有ノードを 1 台確保する必要がないため、小規模な利用にも適しています。</p>
+<p>共有パーティションは空きがある場合に利用可能です。空きがない場合は待機キューに入り、空き発生後に実行されます（即時実行は保証されません）。</p>
+<p>主として小規模な利用を想定した設計ですが、大規模な利用も可能です（共有全体の最大占有率には上限があります。詳細は運用手引きを参照）。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ノード数</td>
+<td>共有プールから自動割当（ジョブ単位でのノード固定は不要）</td>
+</tr>
+<tr>
+<td>利用単位</td>
+<td>1 GPU 利用時間（= GPU 1 基 × 1 時間）</td>
+</tr>
+<tr>
+<td>最大実行時間</td>
+<td>1 ジョブあたり 24 時間</td>
+</tr>
+<tr>
+<td>利用料金</td>
+<td><a href="#利用料金">利用料金</a>を参照</td>
+</tr>
+<tr>
+<td>備考</td>
+<td>購入単位は 1,000 GPU 利用時間から。Slurm キューに投入し、空き GPU に自動配置</td>
+</tr>
+</tbody>
+</table>
+<h4 id="超過利用overdraw">超過利用（Overdraw）<a class="headerlink" href="#超過利用overdraw" title="Permanent link">&para;</a></h4>
+<p>SYNKA では、購入した GPU 利用時間を使い切った後も、<strong>購入した GPU 利用時間の 20%</strong> を超過枠として、引き続きジョブを投入できます（<strong>超過利用</strong>）。超過利用中のジョブは <strong>低い優先度</strong> で実行されます。</p>
+<ul>
+<li><strong>通常利用</strong>（GPU 利用時間の残高あり）: 通常の優先度でジョブが実行されます</li>
+<li><strong>超過利用</strong>（残高を超過、超過枠の範囲内）: 低い優先度で実行されます。通常利用のジョブ（GPU時間保有あり）が投入された場合、超過利用中のジョブは<strong>直ちにキャンセル</strong>されます（猶予時間はありません）</li>
+<li><strong>超過枠を超えた場合</strong>: ジョブの投入が拒否されます。引き続き利用するには GPU 利用時間の追加購入が必要です</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">ご注意</p>
+<p>超過利用中のジョブは、<strong>GPU利用時間の残高がある他プロジェクトのジョブに割り込まれ中断されることがあります</strong>。超過利用はジョブの完了を保証するものではありません。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">チェックポイント保存を推奨します</p>
+<p>超過利用中のジョブはキャンセルされる可能性があります。定期的にチェックポイントを保存し、ジョブがキャンセルされた後にそのチェックポイントを読み込んで再開する機構を実装することを推奨します。</p>
+</div>
+<hr />
+<h2 id="利用料金">利用料金<a class="headerlink" href="#利用料金" title="Permanent link">&para;</a></h2>
+<p>すべての料金は <strong>税込表記</strong> です。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>単位</th>
+<th style="text-align: right;">料金（税込）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>共有パーティション</strong></td>
+<td>1 GPU 利用時間（= GPU 1 基 × 1 時間）</td>
+<td style="text-align: right;"><strong>172 円</strong></td>
+</tr>
+<tr>
+<td><strong>専有パーティション</strong></td>
+<td>1 ノード（= 8 GPU）／ 日</td>
+<td style="text-align: right;"><strong>33,000 円</strong></td>
+</tr>
+<tr>
+<td><strong>大容量ストレージ</strong></td>
+<td>1 TB ／ 月</td>
+<td style="text-align: right;"><strong>540 円</strong>（5 TB まで無料）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>上記の利用料金額は総額表示です。利用料金に関する詳細は <a href="https://drive.google.com/file/d/1sZ0Ry0Pp3eOuG5-CZDSrbl4MMwRwje4B/view?usp=drive_link"><strong>利用料金表（PDF）</strong></a>（<a href="https://drive.google.com/file/d/1gP57TTbfWYQ7vZSKATl86oWcBT_hWAZB/view">利用規程</a> 第 11 条）をご確認ください</li>
+<li>
+<p><strong>ストレージは大容量（HDD）のプロジェクト用ディレクトリ (<code>/data</code>) のみ有料</strong> です（5 TB まで無料）。高速ストレージ（SSD）はユーザディレクトリ（<code>/home</code>）専用となり容量の追加購入は不可です</p>
+</li>
+<li>
+<p>ストレージは年度内いつでも申請可能です（翌月から反映。運用上の目安として前月 7 日までの申請を推奨）</p>
+</li>
+<li>
+<p>共有パーティションの購入単位は <strong>1,000 GPU 利用時間（172,000 円）</strong> から。追加購入は<strong>提供する計算資源に余裕がある場合のみ</strong>可能です（利用料金表 脚注 *2）</p>
+</li>
+<li>
+<p>年度末（3 月 31 日）時点で未使用の GPU 利用時間は<strong>次年度への繰り越しや返金はできません</strong>（利用料金表 脚注 *1）</p>
+</li>
+<li>
+<p>支払方法: <strong>部局間振替</strong>（東大内）または <strong>請求書払い</strong>（銀行振込）</p>
+</li>
+</ul>
+<hr />
+<h2 id="利用規程ポリシー">利用規程・ポリシー<a class="headerlink" href="#利用規程ポリシー" title="Permanent link">&para;</a></h2>
+<p>SYNKA システムの利用にあたっては、以下の規程・ポリシーを遵守してください。プロジェクト申請前に必ずお読みください。</p>
+<ul>
+<li><strong><a href="https://drive.google.com/file/d/1gP57TTbfWYQ7vZSKATl86oWcBT_hWAZB/view">利用規程（PDF）</a>:</strong> 利用条件、禁止事項、免責事項、利用料金等に関する規程</li>
+<li><strong><a href="https://drive.google.com/file/d/1T20s-t-3tNWDr8Ylgzt_KiSAjeaAhO7B/view">個人情報保護方針（PDF）</a>:</strong> 個人情報およびシステム運用データの取り扱い</li>
+<li><strong><a href="https://drive.google.com/file/d/1uFmiM_8LkCNguK1BKwgsFJ4i-J51gO8-/view">利用ガイド（PDF）</a>:</strong> ログイン方法、ジョブの投入、GPU 時間の残高確認など</li>
+<li><strong><a href="https://drive.google.com/file/d/1sZ0Ry0Pp3eOuG5-CZDSrbl4MMwRwje4B/view?usp=drive_link">利用料金表（PDF）</a>:</strong> 利用料金・購入単位・支払方法の詳細</li>
+</ul>
+<h3 id="主なポリシー">主なポリシー<a class="headerlink" href="#主なポリシー" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>利用目的:</strong> 学術研究、教育及び社会貢献に供することを目的とします（第 3 条）</li>
+<li><strong>アカウント管理:</strong> ユーザ ID の第三者への貸与・共有、権限の不正取得、無許可の鍵登録は一切禁止されています。SSH 公開鍵認証（ed25519 形式）のみをサポートしています（第 6 条）</li>
+<li><strong>データ管理:</strong> バックアップは利用者の責任で実施してください。運営機関はデータ消失に関する責任を負いません（第 8 条）</li>
+<li><strong>成果公表:</strong> 本システムの利用により得られた成果を公表する際は、SYNKA システム利用の旨を明記してください（第 10 条）</li>
+<li><strong>輸出管理:</strong> 非居住者の利用や研究成果の海外移転には、輸出管理関連法令に基づく確認・手続きが必要な場合があります（第 21 条）</li>
+</ul>
+<hr />
+<h2 id="利用申込">利用申込<a class="headerlink" href="#利用申込" title="Permanent link">&para;</a></h2>
+<h3 id="利用資格">利用資格<a class="headerlink" href="#利用資格" title="Permanent link">&para;</a></h3>
+<p>以下のいずれかに該当する方が申請できます。</p>
+<ol>
+<li>大学・高等専門学校・大学共同利用機関の教職員および学生</li>
+<li>学術研究・教育を目的とする公的機関に所属し研究に従事する方</li>
+<li>科学研究費助成事業等の公的資金を財源に学術研究を目的とする方</li>
+<li>民間企業に所属する方(別途審査あり)</li>
+<li>その他、機関長が認めた方</li>
+</ol>
+<h3 id="申請の流れ">申請の流れ<a class="headerlink" href="#申請の流れ" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>利用規程・個人情報保護方針の確認</strong>
+   利用規程および個人情報保護方針をお読みいただき、同意の上で申請してください。</p>
+</li>
+<li>
+<p><strong>プロジェクト申請フォームの作成</strong>
+   <a href="https://docs.google.com/spreadsheets/d/1zWkV_cqDvvFwrEKWdkRY2pQqsi-tZcaD/edit?usp=sharing">所定の申請フォーム（Excel）</a> に、以下の必要事項を記入してください。</p>
+<ul>
+<li>プロジェクトの目的と概要</li>
+<li>利用期間（1 ヶ月単位）</li>
+<li>申請計算資源（専有パーティションノード数、共有パーティション GPU 時間、ストレージ容量等: ご希望に沿えない場合があります）</li>
+<li>プロジェクト代表者情報（所属、役職、メールアドレス等）</li>
+<li>利用料支払情報（支払担当者）</li>
+<li>利用者情報（所属、メールアドレス、SSH 公開鍵等）</li>
+</ul>
+</li>
+<li>
+<p><strong>メールで提出</strong>
+   SYNKA 問い合わせ窓口 <code>contact [at] synka-jp.org</code> 宛に送付してください。メール以外の手段では申請を受け付けていません。</p>
+</li>
+<li>
+<p><strong>審査</strong>
+   毎月 7 日までに受理された申請を当月 20 日までに審査し、結果を通知します。</p>
+</li>
+<li>
+<p><strong>利用開始</strong>
+   承認後、翌月 1 日から利用開始です。アカウント情報を記載した「利用登録のお知らせ」をお送りします。</p>
+</li>
+</ol>
+<hr />
+<h2 id="サポート">サポート<a class="headerlink" href="#サポート" title="Permanent link">&para;</a></h2>
+<h3 id="よくある質問faq">よくある質問（FAQ）<a class="headerlink" href="#よくある質問faq" title="Permanent link">&para;</a></h3>
+<details class="question" open="open">
+<summary>Q. 学生でも利用できますか？</summary>
+<p>はい。大学・高専の学生は利用資格があります。プロジェクト代表者は原則として教職員です。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. 民間企業からの利用は可能ですか？</summary>
+<p>はい。別途審査の上、承認する場合があります。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. GPU 利用時間を使い切った後もジョブは実行できますか？</summary>
+<p>はい。超過利用（Overdraw）制度により、購入した GPU 利用時間の 20% を超過枠として、低い優先度で引き続きジョブを実行できます。ただし、GPU 利用時間の残高がある他プロジェクトのジョブに割り込まれ、中断されることがあります。超過枠を超えた場合はジョブの投入が拒否されますので、GPU 利用時間の追加購入をご検討ください。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. 購入した GPU 利用時間は年度をまたいで繰り越せますか？</summary>
+<p>いいえ。年度末（3 月 31 日）に未使用の GPU 利用時間は失効します。返金・繰越はできません。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. 障害でジョブが失敗した場合、GPU 利用時間は返却されますか？</summary>
+<p>システム障害が原因の場合は消費された GPU 利用時間を返却することがあります。ユーザ起因の失敗は返却対象外です。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. ストレージ容量を増やしたいです</summary>
+<p>問い合わせ先メールアドレスにプロジェクト変更申請を行ってください。翌月から反映されます（運用上の目安として、前月 7 日までのお申し込みを推奨します）。年度内の減量申請は認めていません。</p>
+</details>
+<details class="question" open="open">
+<summary>Q. データのバックアップはありますか？</summary>
+<p>いいえ。バックアップは利用者の責任で実施してください。運営機関はデータ消失に関する責任を負いません。</p>
+</details>
+<h3 id="お問い合わせ">お問い合わせ<a class="headerlink" href="#お問い合わせ" title="Permanent link">&para;</a></h3>
+<p><strong>SYNKA 問い合わせ窓口　東京大学情報基盤センター:</strong> <code>contact [at] synka-jp.org</code></p>
+<p>FAQ および利用ガイドをお読みいただいても不明な点がある場合、システムの不具合やセキュリティインシデントが発生した場合は、上記メールアドレスにご連絡ください。メール以外の手段による連絡は受け付けておりません。</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "toc.integrate", "search.highlight", "search.suggest"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
