@@ -1,0 +1,4 @@
+# MkDocs 2.0（プラグイン廃止・unlicensed・本番非推奨）を避けるため 1.x 系に上限ピン
+mkdocs>=1.6,<2.0
+mkdocs-material>=9.5,<10
+mkdocs-macros-plugin>=1.0,<2.0

@@ -1,0 +1,4 @@
+:root{--md-primary-fg-color:#3f51b5;}
+
+/* ==こういう== 記法の見た目を“赤い太字”に */
+mark { background: none; color: #d32f2f; font-weight: 700; }

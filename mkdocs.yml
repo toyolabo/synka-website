@@ -1,0 +1,65 @@
+## SYNKA システム公式サイト — mkdocs 設定（ペライチ構成）
+## docs_dir = docs-onepager/ の単一ページサイト。GitHub Actions でビルドし Pages へデプロイ。
+
+site_name: SYNKAシステム公式サイト
+site_description: 東京大学情報基盤センター・東京大学生産技術研究所が運用するGPUクラスタ SYNKA の公式サイト
+site_url: https://toyolabo.github.io/synka-website/
+
+docs_dir: docs-onepager
+
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+# ペライチ構成: ナビゲーションは単一ページのみ。
+nav:
+  - ホーム: index.md
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.emoji
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+  - macros
+
+# keywords は将来の {{ keywords.* }} 展開用に保持（本文は現状ハードコード）
+extra:
+  site_variant: onepager
+  keywords:
+    system_name: "SYNKA"
+    organization_name: "東京大学情報基盤センター・東京大学生産技術研究所"
+    contact_name: "お問い合わせ"
+    contact_mail: "contact [at] synka-jp.org"
+    new_system_start: "2026年4月6日"
+    cutoff_day: "7日"
+    notification_day: "20日"
+    dedicated_price: "33,000円（税込）/ノード/日"
+    shared_price: "172円（税込）/GPU利用時間"
+    storage_price: "540円（税込）/TB/月"
+    storage_free_tier: "5TB"

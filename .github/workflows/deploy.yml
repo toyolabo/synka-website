@@ -1,0 +1,34 @@
+name: Deploy site to GitHub Pages
+
+# 方式 B（mkdocs ソース + GitHub Actions 自動ビルド）。
+# main への push で mkdocs build → gh-pages ブランチへデプロイ。
+# 公開後は Settings → Pages の Source を「Deploy from a branch / gh-pages / (root)」に設定する。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: mkdocs build --strict
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          # Phase 2（カスタムドメイン切替）で有効化する:
+          # cname: www.synka-jp.org
