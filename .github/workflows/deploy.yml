@@ -30,5 +30,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-          # Phase 2（カスタムドメイン切替）で有効化する:
-          # cname: www.synka-jp.org
+          # カスタムドメイン（apex）。Settings → Pages の Custom domain と一致させること。
+          # これが無いとデプロイのたびに gh-pages の CNAME が消えドメイン設定が外れる。
+          cname: synka-jp.org
